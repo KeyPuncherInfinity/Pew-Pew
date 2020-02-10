@@ -4,6 +4,7 @@
 
 var SECONDS_PER_FRAME = 50; // Controls the speed of screen update
 var SPEED = 1;
+var BULLET_SPEED = 2;
 
 
 
@@ -17,11 +18,30 @@ function controlConstructor() {
 }
 // constructor for the control object
 
+
+function bullet(identification, positionTop, positionLeft, up, right, down, left) {
+    this.id = identification;
+    this.top = positionTop;
+    this.left = positionLeft;
+    this.direction = {
+        up: up,
+        right: right,
+        down: down,
+        left: left
+    };
+}
+// constructor for bullets
+
+
+
+
 var playerOne = {}
 // Reference to the player ONE object
 
 var playerTwo = {}
 // Reference to the player TWO object
+
+var bullets = [];
 
 /*
 Initialization of the game loop thread
@@ -37,6 +57,10 @@ function init() {
     playerTwo.control = new controlConstructor;
     // create control objects for each player
 
+
+    playerOne.weapon = 0;
+    playerTwo.weapon = 0;
+    // weapon wait time
 
     playerOne.element.style.top = "30%";
     playerOne.element.style.left = "30%";

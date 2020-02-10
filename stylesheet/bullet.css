@@ -1,0 +1,7 @@
+.bullet {
+    position: absolute;
+    background-color: tomato;
+    width: 1%;
+    height: 2%;
+    border-radius: 10px;
+}
