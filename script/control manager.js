@@ -8,32 +8,48 @@ function setKey() {
 
     switch(key) {
         case 'w':
-            playerOne.control.up = true;
+            if(!playerOne.control.down){
+                playerOne.control.up = true;
+            }
         break;
         case 'a':
-            playerOne.control.left = true;
+            if(!playerOne.control.right){
+                playerOne.control.left = true;
+            }
         break;
         case 's':
-            playerOne.control.down = true;
+            if(!playerOne.control.up){
+                playerOne.control.down = true;
+            }
         break;
         case 'd':
-            playerOne.control.right = true;
+            if(!playerOne.control.left){
+                playerOne.control.right = true;
+            }
         break;
         case 'x':
             playerOne.control.shoot = true;
         break;
         // end of playerOne inputs
         case '8':
-            playerTwo.control.up = true;
+            if(!playerTwo.control.down){
+                playerTwo.control.up = true;
+            }
         break;
         case '4':
-            playerTwo.control.left = true;
+            if(!playerTwo.control.right){
+                playerTwo.control.left = true;
+            }
         break;
         case '5':
-            playerTwo.control.down = true;
+            if(!playerTwo.control.up){
+                playerTwo.control.down = true;
+            }
         break;
         case '6':
-            playerTwo.control.right = true;
+            if(!playerTwo.control.left){
+                playerTwo.control.right = true;
+            }
         break;
         case '2':
             playerTwo.control.shoot = true;
