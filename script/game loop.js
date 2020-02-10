@@ -5,6 +5,9 @@
 
 function gameLoop() {
 
+    checkEntityCollision(playerOne);
+    checkEntityCollision(playerTwo);
+
     updatePlayerDirection(playerOne);
     updatePlayerDirection(playerTwo);
 
@@ -20,6 +23,8 @@ function gameLoop() {
     cooldownWeapon(playerOne);
     cooldownWeapon(playerTwo);
 
+    checkEntityCollision(playerOne);
+    checkEntityCollision(playerTwo);
 
 }
 
@@ -127,10 +132,16 @@ function updatePlayerPosition(player) {
 function checkForAttack(player) {
     
     /*
+        Check if the player has aimed or return if he hasn't
         Check if the player is shooting
         If shooting, then check if weapon is on cool down
         If not on cooldown, create a bullet
     */
+
+    if(!player.control.up && !player.control.right && !player.control.down && !player.control.left) {
+        return 0;
+    }
+
 
     if(player.control.shoot) {
         if(player.weapon >= 5) {
@@ -147,8 +158,8 @@ function createBullet(identification, left, top) {
     var newBullet = document.createElement("div");
     newBullet.className = "bullet";
     newBullet.id = identification;
-    newBullet.style.left = left;
-    newBullet.style.top = top;
+    newBullet.style.left = (parseInt(left) + 0.5) + "%";;
+    newBullet.style.top = (parseInt(top) + 1) + "%";
     document.body.append(newBullet);
 }
 
@@ -178,6 +189,7 @@ function updateBulletDirection() {
 
 
 function updateBulletPostion() {
+
     for(var index = 0; index < bullets.length; index++) {
         var bullet = document.getElementById(bullets[index].id);
         if(bullets[index].direction.left) {
@@ -212,3 +224,28 @@ function cooldownWeapon(player) {
     player.weapon += 0.1;
 }
 
+
+
+function checkEntityCollision(player) {
+    var ptop = parseInt(player.element.style.top); 
+    var pleft = parseInt(player.element.style.left);
+    // player hitbox is in the middle, so the slight change in the top and left values
+
+    
+    for(var index = 0; index < bullets.length; index++) {
+        var bullet = document.getElementById(bullets[index].id);
+        var btop = parseInt(bullet.style.top);
+        var bleft = parseInt(bullet.style.left);
+
+        if(((ptop - btop) <= 4) && ((pleft - bleft) <= 2) && ((ptop - btop) >= 0) && ((pleft - bleft) >= 0)) {
+            if(player.weapon > 0.5){
+                endGame(player.element.style.backgroundColor);
+            }
+        }
+        if(((btop - ptop) <= 2) && ((bleft - pleft) <= 1) && ((btop - ptop) >= 0) && ((bleft - pleft) >= 0)) {
+            if(player.weapon > 0.5){
+                endGame(player.element.style.backgroundColor);
+            }
+        }
+    }    
+}

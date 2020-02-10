@@ -21,8 +21,8 @@ function controlConstructor() {
 
 function bullet(identification, positionTop, positionLeft, up, right, down, left) {
     this.id = identification;
-    this.top = positionTop;
-    this.left = positionLeft;
+    this.top = (parseInt(positionTop) + 1) + "%";
+    this.left = (parseInt(positionLeft) + 0.5) + "%";
     this.direction = {
         up: up,
         right: right,
@@ -64,13 +64,22 @@ function init() {
 
     playerOne.element.style.top = "30%";
     playerOne.element.style.left = "30%";
+    playerOne.element.style.backgroundColor = "black";
     // initialize player ONE
 
     playerTwo.element.style.top = "70%";
     playerTwo.element.style.left = "70%";
+    playerTwo.element.style.backgroundColor = "white";
     // initialize player TWO
 
 
-    var GAMELOOP = setInterval(gameLoop, SECONDS_PER_FRAME);
+    GAMELOOP = setInterval(gameLoop, SECONDS_PER_FRAME);
     console.log('Game has begun');
+}
+
+
+
+function endGame(player) {
+    alert('Player ' + player + ' lost');
+    clearInterval(GAMELOOP);
 }
