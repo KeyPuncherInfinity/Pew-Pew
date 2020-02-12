@@ -242,12 +242,12 @@ function checkEntityCollision(player) {
         var btop = parseInt(bullet.style.top);
         var bleft = parseInt(bullet.style.left);
 
-        if(((ptop - btop) <= 4) && ((pleft - bleft) <= 2) && ((ptop - btop) >= 0) && ((pleft - bleft) >= 0)) {
+        if(((ptop - btop) <= 2) && ((pleft - bleft) <= 1) && ((ptop - btop) >= 0) && ((pleft - bleft) >= 0)) {
             if(player.weapon > 0.5){
                 endGame(player.element.style.backgroundColor);
             }
         }
-        if(((btop - ptop) <= 2) && ((bleft - pleft) <= 1) && ((btop - ptop) >= 0) && ((bleft - pleft) >= 0)) {
+        if(((btop - ptop) <= 1) && ((bleft - pleft) <= 0.5) && ((btop - ptop) >= 0) && ((bleft - pleft) >= 0)) {
             if(player.weapon > 0.5){
                 endGame(player.element.style.backgroundColor);
             }
