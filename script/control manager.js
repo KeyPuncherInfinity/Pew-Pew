@@ -27,7 +27,7 @@ function setKey() {
                 playerOne.control.right = true;
             }
         break;
-        case 'x':
+        case 'z':
             playerOne.control.shoot = true;
         break;
         // end of playerOne inputs
@@ -51,7 +51,7 @@ function setKey() {
                 playerTwo.control.right = true;
             }
         break;
-        case '2':
+        case '\\':
             playerTwo.control.shoot = true;
         break;
         // end of playerTwo inputs
@@ -79,7 +79,7 @@ function unsetKey() {
         case 'd':
             playerOne.control.right = false;
         break;
-        case 'x':
+        case 'z':
             playerOne.control.shoot = false;
         break;
         // end of playerOne inputs
@@ -95,7 +95,7 @@ function unsetKey() {
         case '6':
             playerTwo.control.right = false;
         break;
-        case '2':
+        case '\\':
             playerTwo.control.shoot = false;
         break;
         // end of playerTwo inputs

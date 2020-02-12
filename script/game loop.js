@@ -222,6 +222,11 @@ function updateBulletPostion() {
 
 function cooldownWeapon(player) {
     player.weapon += 0.1;
+    if(player.weapon >= 5){
+        player.element.style.border = "3px solid tomato";
+    } else {
+        player.element.style.border = "none";
+    }
 }
 
 
