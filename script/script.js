@@ -49,6 +49,10 @@ Initialization of the game loop thread
 
 function init() {
 
+    alert("Please open the console for a brief introduction");
+
+    addIntro();
+
     playerOne.element = document.getElementById('playerOne');
     playerTwo.element = document.getElementById('playerTwo');
     // create element objects for each player
@@ -82,4 +86,13 @@ function init() {
 function endGame(player) {
     alert('Player ' + player + ' lost');
     clearInterval(GAMELOOP);
+}
+
+function addIntro() {
+    console.log(
+        'The aim of the game is to shoot persistent bullets at the enemy player\n' +
+        'Player Black can control his character with the keys \'w\', \'a\', \'s\', \'d\' for up, left, down and right respectively and shoot with the key \'z\'\n' +
+        'Player White can control his character with the keys \'8\', \'4\', \'5\', \'6\' for up, left, down and right respectively and shoot with the key \'\\\'\n' +
+        'Remeber, that no bullet is friendly. Good luck!' 
+    );
 }
